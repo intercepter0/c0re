@@ -18,7 +18,7 @@ public class Log extends GridPane {
         Timeline opacityDecrease = new Timeline(new KeyFrame(Duration.millis(200),event -> {
             try {
                 for (Node label : getChildren()) {
-                    label.setOpacity(label.getOpacity() - 0.01);
+                    label.setOpacity(label.getOpacity() - 0.0075);
                 }
             } catch (Exception e) {
 
@@ -26,10 +26,11 @@ public class Log extends GridPane {
         }));
         opacityDecrease.setCycleCount(Timeline.INDEFINITE);
         opacityDecrease.play();
+
     }
-    public void add(String note) {
+    public void add(String note,Color color) {
         Label newNote = new Label("<Log> "+note);
-        newNote.setTextFill(Color.GRAY);
+        newNote.setTextFill(color);
         newNote.heightProperty().addListener((obs, oldVal, newVal) -> {
             setLayoutY(getLayoutY()-newVal.doubleValue());
         });
